@@ -37,7 +37,7 @@
                 </button>
                 
                 <p class="small-text">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi repellendus amet velit molestiae laborum libero, rem fuga, placeat labore deserunt dolore quidem officiis eius maxime fugit. Totam, libero id?
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi repellendus amet velit molestiae laborum libero, rem fuga, placeat labore deserunt dolore quidem officiis eius maxime fugit. Totam, libero id?.
                 </p>
                 
                 <p class="small-text">
@@ -59,7 +59,7 @@
                     Jan<br><span class="date-year">2025</span>
                 </div>
                 <div class="date-details">
-                    Selasa 06<br>January 2025<br>Pinterest
+                    Sunday 06<br>January 2025<br>Pinterest
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <span style="font-size: 12px;">🎨</span>
@@ -176,10 +176,7 @@
         });
 
         // Add smooth scrolling for mobile
-        if (window.innerWidth <= 768) {
-            document.body.style.overflow = 'auto';
-            document.body.style.height = 'auto';
-        }
+        // Remove the mobile overflow override since we fixed it in CSS
 
         // Dynamic date update
         function updateDate() {
@@ -187,7 +184,7 @@
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
                           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             
             const month = months[now.getMonth()];
             const year = now.getFullYear();

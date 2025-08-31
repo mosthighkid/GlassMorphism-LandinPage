@@ -1,2 +1,2 @@
 # GlassMorphism-LandinPage
- GlassMorphism LandinPage created with HTML, CSS and JavaScript
+ Glass Morphism Landing Page created with HTML, CSS and JavaScript

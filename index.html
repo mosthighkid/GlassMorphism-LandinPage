@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Landing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-image"></div>
+    
+    <div class="container">
+        <!-- Login Card -->
+        <div class="glass-card login-card">
+            <div class="card-header">
+                <h1 class="login-title">Log in</h1>
+                <a href="#" class="signup-link">Sign up</a>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="email" class="glass-input" placeholder="e-mail address" id="email" required>
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+                
+                <div class="input-group">
+                    <div class="password-row">
+                        <input type="password" class="glass-input password-input" placeholder="password" id="password" required>
+                        <a href="#" class="forgot-link">I forgot</a>
+                    </div>
+                    <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+                </div>
+                
+                <button type="button" class="pinterest-btn">
+                    <span style="margin-right: 8px;">📌</span>
+                    Pinterest
+                </button>
+                
+                <p class="small-text">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi repellendus amet velit molestiae laborum libero, rem fuga, placeat labore deserunt dolore quidem officiis eius maxime fugit. Totam, libero id?
+                </p>
+                
+                <p class="small-text">
+                    <a href="#" style="color: rgba(0,0,0,0.6);">Click here for more info...</a>
+                </p>
+            </form>
+            
+            <button class="arrow-btn" id="submitBtn">→</button>
+        </div>
+        
+        <!-- Date Card -->
+        <div class="glass-card date-card">
+            <div class="pink-circle"></div>
+            <div style="position: relative; z-index: 1;">
+                <div style="text-align: right; font-size: 12px; color: rgba(0,0,0,0.6); margin-bottom: 10px;">
+                    Minimalism style<br>Typography
+                </div>
+                <div class="date-large">
+                    Jan<br><span class="date-year">2025</span>
+                </div>
+                <div class="date-details">
+                    Selasa 06<br>January 2025<br>Pinterest
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 12px;">🎨</span>
+                    <span style="font-size: 11px; color: rgba(0,0,0,0.6);">Creative.style</span>
+                </div>
+                <button class="click-here-btn">Click Here →</button>
+            </div>
+        </div>
+        
+        <!-- References Card -->
+        <div class="glass-card references-card">
+            <h2 class="references-title">References</h2>
+            <p class="references-subtitle">By Pinterest</p>
+            <button class="discover-btn">Discover</button>
+        </div>
+    </div>
+
+    <script>
+        // Form validation
+        const form = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showError(errorElement, show = true) {
+            if (show) {
+                errorElement.classList.add('show');
+            } else {
+                errorElement.classList.remove('show');
+            }
+        }
+
+        emailInput.addEventListener('blur', function() {
+            if (this.value && !validateEmail(this.value)) {
+                showError(emailError);
+            } else {
+                showError(emailError, false);
+            }
+        });
+
+        passwordInput.addEventListener('blur', function() {
+            if (this.value && this.value.length < 6) {
+                showError(passwordError);
+            } else {
+                showError(passwordError, false);
+            }
+        });
+
+        emailInput.addEventListener('input', function() {
+            if (validateEmail(this.value)) {
+                showError(emailError, false);
+            }
+        });
+
+        passwordInput.addEventListener('input', function() {
+            if (this.value.length >= 6) {
+                showError(passwordError, false);
+            }
+        });
+
+        submitBtn.addEventListener('click', function() {
+            let isValid = true;
+            
+            if (!emailInput.value) {
+                showError(emailError);
+                isValid = false;
+            } else if (!validateEmail(emailInput.value)) {
+                showError(emailError);
+                isValid = false;
+            } else {
+                showError(emailError, false);
+            }
+            
+            if (!passwordInput.value) {
+                showError(passwordError);
+                isValid = false;
+            } else if (passwordInput.value.length < 6) {
+                showError(passwordError);
+                isValid = false;
+            } else {
+                showError(passwordError, false);
+            }
+            
+            if (isValid) {
+                // Simulate login success
+                this.style.background = 'rgba(76, 175, 80, 0.8)';
+                this.innerHTML = '✓';
+                setTimeout(() => {
+                    alert('Login successful! (Demo)');
+                    this.style.background = 'rgba(0, 0, 0, 0.8)';
+                    this.innerHTML = '→';
+                }, 1500);
+            }
+        });
+
+        // Add click handlers for other buttons
+        document.querySelector('.pinterest-btn').addEventListener('click', function() {
+            alert('Pinterest login (Demo)');
+        });
+
+        document.querySelector('.click-here-btn').addEventListener('click', function() {
+            alert('Creative style clicked! (Demo)');
+        });
+
+        document.querySelector('.discover-btn').addEventListener('click', function() {
+            alert('Discover Pinterest references (Demo)');
+        });
+
+        // Add smooth scrolling for mobile
+        if (window.innerWidth <= 768) {
+            document.body.style.overflow = 'auto';
+            document.body.style.height = 'auto';
+        }
+
+        // Dynamic date update
+        function updateDate() {
+            const now = new Date();
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+            const day = dayNames[now.getDay()];
+            const date = now.getDate().toString().padStart(2, '0');
+            
+            document.querySelector('.date-large').innerHTML = ${month}<br><span class="date-year">${year}</span>;
+            document.querySelector('.date-details').innerHTML = ${day} ${date}<br>${month} ${year}<br>Pinterest;
+        }
+
+        updateDate();
+    </script>
+</body>
+</html>

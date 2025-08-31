@@ -1,0 +1,325 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            position: relative;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><radialGradient id="bg" cx="50%" cy="50%"><stop offset="0%" style="stop-color:%23ff9a9e"/><stop offset="100%" style="stop-color:%23fad0c4"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23bg)"/><polygon points="200,800 400,600 600,750 800,550 1000,700 1200,500 1400,650 1600,450 1800,600 1920,400 1920,1080 0,1080" fill="%23ff8a80" opacity="0.3"/><polygon points="0,900 300,700 600,850 900,650 1200,800 1500,600 1800,750 1920,550 1920,1080 0,1080" fill="%23ff7043" opacity="0.2"/></svg>') center/cover;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(255, 154, 158, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(255, 154, 158, 0.2);
+        }
+
+        .login-card {
+            width: 320px;
+            animation-delay: 0.1s;
+        }
+
+        .date-card {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.25);
+            animation-delay: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .references-card {
+            width: 280px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            animation-delay: 0.5s;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .login-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .signup-link {
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link:hover {
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .glass-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: rgba(0, 0, 0, 0.8);
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .glass-input::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-input:focus {
+            border-color: rgba(255, 122, 127, 0.6);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 122, 127, 0.3);
+            transform: scale(1.02);
+        }
+
+        .password-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .password-input {
+            flex: 1;
+        }
+
+        .forgot-link {
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .pinterest-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.3);
+            color: rgba(0, 0, 0, 0.7);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+        }
+
+        .pinterest-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .small-text {
+            font-size: 11px;
+            color: rgba(0, 0, 0, 0.5);
+            line-height: 1.4;
+            margin: 15px 0;
+        }
+
+        .arrow-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .date-large {
+            font-size: 48px;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.8);
+            line-height: 1;
+        }
+
+        .date-year {
+            color: rgba(0, 0, 0, 0.4);
+            font-weight: 200;
+        }
+
+        .date-details {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+            margin: 20px 0;
+        }
+
+        .pink-circle {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .click-here-btn {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .click-here-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        .references-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .references-subtitle {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .discover-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .discover-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 10px;
+            }
+
+            .glass-card {
+                width: 100%;
+                max-width: 350px;
+                padding: 20px;
+            }
+
+            .date-large {
+                font-size: 36px;
+            }
+
+            .pink-circle {
+                width: 80px;
+                height: 80px;
+                right: -20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 15px;
+            }
+
+            .login-title {
+                font-size: 24px;
+            }
+
+            .date-large {
+                font-size: 32px;
+            }
+        }
